@@ -1,0 +1,8 @@
+{
+  "eventType": "abar-gcp-covid19-dataingestion",
+  "eventId": "abar-gcp-covid19-filedate",
+  "timestamp": "2020-12-01T16:00:00Z",
+  "data": {
+    "data": "ewogICJldmVudFR5cGUiOiAiYWJhci1nY3AtY292aWQxOS1kYXRhaW5nZXN0aW9uIiwKICAiZXZlbnRJZCI6ICJhYmFyLWdjcC1jb3ZpZDE5LWZpbGVkYXRlIiwKICAidGltZXN0YW1wIjogIiIsCiAgImRhdGEiOiB7CiAgICAiY292aWQxOV9maWxlZGF0ZSI6ICIxMC0wMS0yMDIwIgogIH0KfQ=="
+  }
+}
