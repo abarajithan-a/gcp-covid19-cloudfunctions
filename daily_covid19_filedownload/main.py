@@ -5,11 +5,8 @@ import json
 
 from google.cloud import storage
 
-# url = os.environ['URL']
-# bucket_name = os.environ['BUCKET'] #without gs://
-# file_name = os.environ['FILE_NAME']
-url = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/"
-bucket_name = "abar-gs-covid19-daily-dataset"
+url = os.environ.get('covid19_dataset_url')
+bucket_name = os.environ.get('covid19_dataset_bucket')
 
 def file_download(event, context):
 	
