@@ -1,0 +1,13 @@
+region: us-east1
+runtime: python37
+memory: 256MB
+timeout: 300s
+env_vars_file: ../env.prod.yaml
+
+cloud_functions:
+  - daily_covid19_filedownload:
+    name: daily_covid19_filedownload
+    source: ../daily_covid19_filedownload
+    entry-point: file_download
+    trigger-type: trigger-topic
+    trigger-name: abar-ps-topic-covid19-filedate

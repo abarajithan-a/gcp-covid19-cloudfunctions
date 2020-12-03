@@ -1,16 +1,7 @@
 #! /bin/bash
+CF_NAME=$1
+CF_ARG_LIST=$2
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-SOURCE_DIR="${DIR}/../daily_covid19_filedownload"
+CF_DEPLOY_CMD="gcloud functions deploy $CF_NAME $CF_ARG_LIST"
 
-gcloud functions \
-  deploy daily_covid19_filedownload \
-  --source=${SOURCE_DIR} \
-  --region=us-east1 \
-  --entry-point file_download \
-  --env-vars-file ../env.prod.yaml \
-  --runtime python37 \
-  --memory=256MB \
-  --timeout=300s \
-  --trigger-topic abar-ps-topic-covid19-filedate \
-  --allow-unauthenticated
+exec $CF_DEPLOY_CMD
