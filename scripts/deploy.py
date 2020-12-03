@@ -22,15 +22,17 @@ def main(argv=None):
 	# deploy each cloud function in config.yaml iteratively
 	for item in df_config['cloud_functions']:
 		cf_name = item['name']
-		cf_arg_list = " ".join(["--source=" + item['source'],
-								"--entry-point=" + item['entry-point'],
-								"--" + item['trigger-type'] + " " + item['trigger-name'],
-								"--region=" + cf_region,
-								"--runtime=" + cf_runtime,
-								"--memory=" + cf_memory,
-								"--timeout=" + cf_timeout,
-								"--env-vars-file=" + cf_env_vars_file,
-								"--allow-unauthenticated"])
+		cf_arg_list = ' '.join([
+		    '--source=' + item['source'],
+		    '--entry-point=' + item['entry-point'],
+		    '--' + item['trigger-type'] + ' ' + item['trigger-name'],
+		    '--region=' + cf_region,
+		    '--runtime=' + cf_runtime,
+		    '--memory=' + cf_memory,
+		    '--timeout=' + cf_timeout,
+		    '--env-vars-file=' + cf_env_vars_file,
+		    '--allow-unauthenticated',
+		    ])
 
 		subprocess.run(['sh', 'deploy-cloud-functions.sh', cf_name, cf_arg_list])
 
