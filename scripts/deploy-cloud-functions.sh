@@ -1,7 +1,15 @@
 #! /bin/bash
+CF_NAME=$1
+CF_ARG_LIST=$2
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-SOURCE_DIR="${DIR}/../daily_covid19_filedownload"
+CF_DEPLOY_CMD="gcloud functions deploy $CF_NAME $CF_ARG_LIST"
+
+exec $CF_DEPLOY_CMD
+
+CF_NAME=$1
+CF_ARG_LIST=$2
+
+deploy_cmd="gcloud functions deploy $CF_NAME $CF_ARG_LIST"
 
 gcloud functions \
   deploy daily_covid19_filedownload \
