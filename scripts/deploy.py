@@ -20,12 +20,12 @@ def main(argv=None):
 	cf_env_vars_file = df_config['env_vars_file']
 
 	# deploy each cloud function in config.yaml iteratively
-	for item in df_config['cloud_functions']:
-		cf_name = item['name']
+	for fn in df_config['cloud_functions']:
+		cf_name = fn['name']
 		cf_arg_list = ' '.join([
-		    '--source=' + item['source'],
-		    '--entry-point=' + item['entry-point'],
-		    '--' + item['trigger-type'] + ' ' + item['trigger-name'],
+		    '--source=' + fn['source'],
+		    '--entry-point=' + fn['entry-point'],
+		    '--' + fn['trigger-type'] + ' ' + fn['trigger-name'],
 		    '--region=' + cf_region,
 		    '--runtime=' + cf_runtime,
 		    '--memory=' + cf_memory,
