@@ -1,4 +1,5 @@
 functions-framework
 google-cloud-storage
 wget
+pandas
 pyyaml

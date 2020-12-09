@@ -11,3 +11,10 @@ cloud_functions:
     entry-point: file_download
     trigger-type: trigger-topic
     trigger-name: abar-ps-topic-covid19-filedate
+  
+  - daily_covid19_ingest_bigquery:
+    name: daily_covid19_ingest_bigquery
+    source: ../daily_covid19_ingest_bigquery
+    entry-point: ingest_gs_to_bq
+    trigger-type: trigger-bucket
+    trigger-name: abar-gs-covid19-daily-dataset
