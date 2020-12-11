@@ -22,10 +22,16 @@ def main(argv=None):
 	# deploy each cloud function in config.yaml iteratively
 	for fn in df_config['cloud_functions']:
 		cf_name = fn['name']
+
+		if fn['trigger-type'] == 'trigger-http':
+			cf_trigger = fn['trigger-type']
+		else:
+			cf_trigger = fn['trigger-type'] + ' ' + fn['trigger-name']
+
 		cf_arg_list = ' '.join([
 		    '--source=' + fn['source'],
 		    '--entry-point=' + fn['entry-point'],
-		    '--' + fn['trigger-type'] + ' ' + fn['trigger-name'],
+		    '--' + cf_trigger,
 		    '--region=' + cf_region,
 		    '--runtime=' + cf_runtime,
 		    '--memory=' + cf_memory,
