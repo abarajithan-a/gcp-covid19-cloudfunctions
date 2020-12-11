@@ -5,6 +5,12 @@ timeout: 300s
 env_vars_file: ../env.prod.yaml
 
 cloud_functions:
+  - daily_covid19_filedate_publish:
+    name: daily_covid19_filedate_publish
+    source: ../daily_covid19_filedate_publish
+    entry-point: publish_filedate_event
+    trigger-type: trigger-http
+
   - daily_covid19_filedownload:
     name: daily_covid19_filedownload
     source: ../daily_covid19_filedownload
