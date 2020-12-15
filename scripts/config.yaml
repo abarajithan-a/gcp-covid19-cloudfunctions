@@ -11,6 +11,12 @@ cloud_functions:
     entry-point: publish_filedate_event
     trigger-type: trigger-http
 
+  - replay_covid19_filedates_publish:
+    name: replay_covid19_filedates_publish
+    source: ../replay_covid19_filedates_publish
+    entry-point: replay_filedates_event
+    trigger-type: trigger-http
+
   - daily_covid19_filedownload:
     name: daily_covid19_filedownload
     source: ../daily_covid19_filedownload
