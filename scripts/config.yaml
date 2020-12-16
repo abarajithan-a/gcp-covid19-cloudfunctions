@@ -10,12 +10,18 @@ cloud_functions:
     source: ../daily_covid19_filedate_publish
     entry-point: publish_filedate_event
     trigger-type: trigger-http
+    environment_variables:
+        covid19_filedate_topic: "abar-ps-topic-covid19-filedate"
 
   - replay_covid19_filedates_publish:
     name: replay_covid19_filedates_publish
     source: ../replay_covid19_filedates_publish
     entry-point: replay_filedates_event
     trigger-type: trigger-http
+    environment_variables:
+        covid19_filedate_topic: "abar-ps-topic-covid19-filedate"
+        covid19_replay_startdate: ""
+        covid19_replay_enddate: ""            
 
   - daily_covid19_filedownload:
     name: daily_covid19_filedownload
@@ -23,6 +29,9 @@ cloud_functions:
     entry-point: file_download
     trigger-type: trigger-topic
     trigger-name: abar-ps-topic-covid19-filedate
+    environment_variables:
+        covid19_dataset_url: "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/"
+        covid19_dataset_bucket: "abar-gs-covid19-daily-dataset"     
   
   - daily_covid19_ingest_bigquery:
     name: daily_covid19_ingest_bigquery
@@ -30,3 +39,6 @@ cloud_functions:
     entry-point: ingest_gs_to_bq
     trigger-type: trigger-bucket
     trigger-name: abar-gs-covid19-daily-dataset
+    environment_variables:
+        covid19_bigquery_dataset: "abar_bq_dataset_covid19_raw"
+        covid19_bigquery_ingest_table: "daily_ingest_covid19_raw"    
