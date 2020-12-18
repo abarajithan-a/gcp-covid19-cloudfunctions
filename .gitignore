@@ -87,3 +87,6 @@ dmypy.json
 
 # profiling data
 .prof
+
+# miscellaneous
+.DS_Store
